@@ -2,33 +2,61 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>おすすめの食べ物紹介</title>
+    <title>動く時計</title>
+    <script>
+        function updateClock() {
+            // 現在時刻を取得
+            var now = new Date();
+            var hours = now.getHours();
+            var minutes = now.getMinutes();
+            var seconds = now.getSeconds();
+            
+            // 1桁の場合は0を付ける
+            if (hours < 10) hours = '0' + hours;
+            if (minutes < 10) minutes = '0' + minutes;
+            if (seconds < 10) seconds = '0' + seconds;
+            
+            // 時刻を表示
+            var timeString = hours + ':' + minutes + ':' + seconds;
+            document.getElementById('clock').innerHTML = timeString;
+        }
+        
+        // 1秒ごとにupdateClock関数を実行
+        setInterval(updateClock, 1000);
+        
+        // ページ読み込み時に即座に表示
+        window.onload = updateClock;
+    </script>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container{
+            width: 300px;
+            height: 200px;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            border: 3px solid #1c282e;
+            border-radius: 10px;
+            padding: 20px 0 40px;
+            background-color: #dce6f5;
+        }
+        h1{color:#1c282e;}
+    </style>
 </head>
 <body>
-    <h1>おすすめな食べ物紹介</h1>
-    <a href="second.html">おすすめの旅行先はこちら</a>
-    <h2>今川焼</h2>
-    <img src="https://www.free-materials.com/adm/wp-content/uploads/2016/10/adtDSC_2579-.jpg" width="400" height="250" alt="今川焼の写真">
-    <p>
-        幅広い年齢層に愛される今川焼<br>
-        円盤状のカリッとした生地の中に、もっちりとした生地と餡子やクリームなどが詰まった和菓子<br>
-        地域によって呼び名が異なることから、たびたび名称争いが勃発する<br>            
-        呼び名は違っても、変わらないおいしさ！
-    </p>
-    <p>【コラム】主な名称</p>
-    <ul>
-        <li>今川焼 / 関東中心に親しまれている</li>
-        <li>大判焼き / 東北・東海・四国など</li>
-        <li>回転焼き / 関西や九州など</li>
-        <li>おやき / 北海道や青森</li>
-        <li>そのほか
-            <ul>
-                <li>あじもん</li>
-                <li>御座候</li>
-                <li>二重焼き　　など</li>
-            </ul>
-        </li>
-    </ul>
+    <div class="container">    
+    <h1>現在時刻</h1>
+    <div id="clock" style="font-size: 48px; font-weight: bold; color: rgb(56, 139, 203);">
+        00:00:00
+    </div>
+    </div>
+    
+    <!-- ここに既存のコンテンツを配置 -->
 </body>
 </html>
